@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, sans-serif; /* Adicionado sans-serif como fallback */
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    width: 380px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+/* Ajuste para garantir que o formulário não quebre o layout */
+form {
+    width: 100%;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box; /* Importante para o padding não "estourar" a largura */
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s; /* Deixa o hover mais suave */
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+/* Substituímos o #mensagem por uma classe de erro mais moderna */
+.error-message {
+    margin-top: 15px;
+    color: #dc2626;
+    background: #fee2e2;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    border: 1px solid #fecaca;
+}
+
+/* Estilo para o link de Sair no Dashboard */
+.btn-sair {
+    text-decoration: none;
+    color: #2563eb;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.btn-sair:hover {
+    text-decoration: underline;
+}

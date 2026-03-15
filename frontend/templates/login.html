@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Cognvox</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <form action="/login" method="POST" class="login-box">
+        <img src="/static/img/logo.png" class="logo">
+        <h2>Login</h2>
+
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="senha" placeholder="Senha" required>
+
+        <button type="submit">Entrar</button>
+
+        {% if erro %}
+            <p style="color: #ff4b2b; font-weight: bold; margin-top: 10px;">{{ erro }}</p>
+        {% endif %}
+    </form>
+
+    </body>
+</html>
