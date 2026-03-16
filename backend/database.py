@@ -1,18 +1,26 @@
 import mysql.connector
-import bcrypt
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+DB_HOST = os.getenv("DB_HOST")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_NAME = os.getenv("DB_NAME")
 
 
 def create_database():
 
     connection = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="Jv0602fs@"
+        host=DB_HOST,
+        user=DB_USER,
+        password=DB_PASSWORD
     )
 
     cursor = connection.cursor()
 
-    cursor.execute("CREATE DATABASE IF NOT EXISTS login_cognvox")
+    cursor.execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME}")
 
     connection.close()
 
@@ -20,10 +28,10 @@ def create_database():
 def get_connection():
 
     connection = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="Jv0602fs@",
-        database="login_cognvox"
+        host=DB_HOST,
+        user=DB_USER,
+        password=DB_PASSWORD,
+        database=DB_NAME
     )
 
     return connection
@@ -44,31 +52,4 @@ def create_tables():
     """)
 
     connection.commit()
-    connection.close()
-
-
-def create_initial_user():
-
-    connection = get_connection()
-    cursor = connection.cursor()
-
-    senha = "123456"
-
-    senha_hash = bcrypt.hashpw(
-        senha.encode(),
-        bcrypt.gensalt()
-    ).decode()
-
-    try:
-
-        cursor.execute("""
-        INSERT INTO usuarios (nome,email,senha_hash)
-        VALUES (%s,%s,%s)
-        """, ("Admin", "admin@email.com", senha_hash))
-
-        connection.commit()
-
-    except:
-        pass
-
     connection.close()
